@@ -1,12 +1,23 @@
 package com.cooper.cooperdddstart.order.domain;
 
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Collections;
 import java.util.List;
 
+@Entity
+@Table(name = "purchase_order")
 @EqualsAndHashCode(of = "orderNumber")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
+
+    @EmbeddedId
+    private OrderNo orderNo;
 
     private OrderState orderState;
     private ShippingInfo shippingInfo;
